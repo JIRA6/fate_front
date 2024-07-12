@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../react_practice.iml" filepath="$PROJECT_DIR$/../react_practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fate_front.iml" filepath="$PROJECT_DIR$/../fate_front.iml" />
     </modules>
   </component>
 </project>
