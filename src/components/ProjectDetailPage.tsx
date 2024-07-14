@@ -37,6 +37,8 @@ const ProjectDetailPage = () => {
   const [newCardStatus, setNewCardStatus] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [statusDropdownOpen, setStatusDropdownOpen] = useState(false);
+  const [assigneeDropdownOpen, setAssigneeDropdownOpen] = useState(false);
 
   useEffect(() => {
     const storedProjects = JSON.parse(localStorage.getItem('projects') || '[]');
@@ -74,6 +76,16 @@ const ProjectDetailPage = () => {
     setCards(cards.map(card => card.id === id ? { ...card, status } : card));
   };
 
+  const toggleStatusDropdown = () => {
+    setStatusDropdownOpen(!statusDropdownOpen);
+    setAssigneeDropdownOpen(false); // Close assignee dropdown if open
+  };
+
+  const toggleAssigneeDropdown = () => {
+    setAssigneeDropdownOpen(!assigneeDropdownOpen);
+    setStatusDropdownOpen(false); // Close status dropdown if open
+  };
+
   return (
       <DndProvider backend={HTML5Backend}>
         <div className="project-detail-container">
@@ -94,13 +106,39 @@ const ProjectDetailPage = () => {
             <h1>{project?.name}</h1>
             <p>{project?.description}</p>
             <div className="project-buttons">
-              <button onClick={() => alert('활성')}>활성</button>
+              <button onClick={() => alert('컬럼 이동')}>컬럼 이동</button>
               <button onClick={() => alert('초대')}>초대</button>
               <button onClick={() => alert('수정')}>수정</button>
               <button onClick={() => alert('삭제')}>삭제</button>
             </div>
           </div>
           <main>
+            <div className="task-board-header">
+              {/* Status dropdown */}
+              <div className="dropdown status-dropdown">
+                <button onClick={toggleStatusDropdown}>상태별 리스트</button>
+                {statusDropdownOpen && (
+                    <ul className="dropdown-menu">
+                      <li onClick={() => alert('Emergency 선택')}>Emergency</li>
+                      <li onClick={() => alert('Todo 선택')}>Todo</li>
+                      <li onClick={() => alert('In Progress 선택')}>In Progress</li>
+                      <li onClick={() => alert('Done 선택')}>Done</li>
+                    </ul>
+                )}
+              </div>
+              {/* Assignee dropdown */}
+              <div className="dropdown assignee-dropdown">
+                <button onClick={toggleAssigneeDropdown}>작업자별 리스트</button>
+                {assigneeDropdownOpen && (
+                    <ul className="dropdown-menu">
+                      <li onClick={() => alert('User A 선택')}>User A</li>
+                      <li onClick={() => alert('User B 선택')}>User B</li>
+                      <li onClick={() => alert('User C 선택')}>User C</li>
+                      <li onClick={() => alert('User D 선택')}>User D</li>
+                    </ul>
+                )}
+              </div>
+            </div>
             <div className="task-board">
               {['Emergency', 'Todo', 'In Progress', 'Done'].map(status => (
                   <TaskColumn
@@ -165,7 +203,14 @@ const TaskColumn: React.FC<TaskColumnProps> = ({ status, cards, moveCard, addCar
 
   return (
       <div ref={drop} className="task-column">
-        <h2>{status}</h2>
+        <div className="column-header">
+          <h2>{status}</h2>
+          <div className="column-buttons">
+            <button onClick={() => alert(`${status} 카드 이동`)}>카드 이동</button>
+            <button onClick={() => alert(`${status} 수정`)}>수정</button>
+            <button onClick={() => alert(`${status} 삭제`)}>삭제</button>
+          </div>
+        </div>
         {cards.map(card => (
             <TaskCard key={card.id} card={card} />
         ))}
