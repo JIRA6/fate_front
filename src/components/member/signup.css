@@ -1,0 +1,68 @@
+.signup-component {
+  position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.signup-component > h2 {
+	text-align: left;
+	color: #fcd11e;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.signup-component-input > input {
+  width: 100%;
+	height: 35px;
+	margin-top: 20px;
+	font-size: 18px;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.signup-component-checkbox {
+  margin-top: 20px;
+}
+
+.signup-component-checkbox > label {
+  display: flex;
+  align-items: center;
+}
+
+.signup-component-checkbox input {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.signup-component-error-message {
+	margin-top: 20px;
+	text-align: center;
+  color: red;
+}
+
+.signup-component-footer {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.signup-component-footer > button {
+	width: 100px;
+	height: 40px;
+	border: 2px solid #fcd11e;
+	background: #fcd11e;
+	border-radius: 25px;
+	padding: 3px 12px 5px 12px;
+	color: black;
+	font-size: 14px;
+}
+
+.signup-component-footer > button:hover {
+	color: black;
+	background: #fff;
+	border: 2px solid #fcd11e;
+	cursor: pointer;
+}
