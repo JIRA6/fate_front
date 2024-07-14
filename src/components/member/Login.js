@@ -27,9 +27,9 @@ function Login() {
     if (e.key === "Enter") {
       handleLogin();
     }
-  }
+  };
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
 
     if (!loginInfo.username || !loginInfo.password) {
       return setMessage("아이디, 비밀번호를 모두 입력해주세요");
