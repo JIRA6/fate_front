@@ -3,26 +3,16 @@
 tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 ?
 src/custom.d.ts,4\7\4765e0a31eea1eead84e1b0fa95dbd2426c9ec4b
-F
-src/reportWebVitals.ts,d\9\d938938695d447dadda115e28781c6541f53fc4f
-=
-src/index.tsx,5\a\5ab44fe33ca96299f51ad4778a73e425b92bf439
-;
-src/App.tsx,8\3\835da56f32df714aaed6285a5b7fc3a7807851e4
 A
 public/custom.css,5\c\5c37210aca63badaf2b0df614010bb9a428f2fee
 A
 public/index.html,f\4\f43ecdf8d666ee908aacce037b4cd72159e4741b
 ;
 src/App.css,a\a\aa7165aefcf8ee3d73539e99ab007daf1aa18d8d
-@
-src/App.test.tsx,1\f\1fc1c06a0502bf303f8ba35e530938a98e7e35b2
 =
 src/index.css,c\5\c5d38a62d1faae90a2acaa34b79a7ef365c917e4
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-A
-src/setupTests.ts,3\9\39129446b425a1d640160c068e4194e96639eedf
 <
 src/logo.svg,6\d\6d3a8cd532ece5b4ddbd4b3b6a678ba686d300bc
 A
@@ -259,3 +249,23 @@ G.idea/sonarlint/issuestore/6/4/64c8749f273f2498813d8e367242b13e73cbf7c3,c\0\c0
 Q.idea/sonarlint/securityhotspotstore/2/e/2e1e7da6bd3d1ca148b2c9de7df5bb3c64608044,9\6\96ca96492a211af58b82eaa78ded1981d01171a0
 w
 G.idea/sonarlint/issuestore/6/3/6362862d44562ae94e51b34b511fbbb86b6d27e2,a\4\a4061929a684d41285b8745f2561eb7e1bc53bc9
+:
+
+src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+A
+src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
+?
+src/App.test.js,9\2\923703ced91ac38943d37930d9d27a7ebe8f01ad
+<
+src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
+F
+src/reportWebVitals.js,1\c\1ce5e63ae1582ed0b425c46001299a07515efbf9
+:
+
+src/api.js,8\c\8c37372e0f85ef2d908f9d02c49f6a0d04b1f091
+P
+ src/components/BoardComponent.js,c\e\ce1169de3a31cbb1a0276acee76481e5cf4f3dcd
+O
+src/components/AuthComponent.js,5\a\5aaa4d6c08bfff89184bd2a8d17ed3f1d91b212d
+?
+src/MainPage.js,3\a\3a15c7115fc0494b154bd65f64a10ec2d5d2f392

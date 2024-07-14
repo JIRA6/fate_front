@@ -1,0 +1,18 @@
+
+³typescript:S6606,"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(ö©àè8ƒĞ°ıŠ2J$62f0a568-a536-435c-b85f-7ea6cc0f6320
+ typescript:S6847z"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(ìïàŒÿÿÿÿÿ8„Ğ°ıŠ2J$c5c48c77-e222-47b3-89d6-e074d6825129
+­typescript:S1082z"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(ìïàŒÿÿÿÿÿ8„Ğ°ıŠ2J$dda04864-e3ac-4191-a7b6-178715f079b8
+ typescript:S6847{"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(ˆ¨êüÿÿÿÿ8„Ğ°ıŠ2J$fd2c0d5d-2ad6-4f6a-85bc-b15ec1ae793a
+­typescript:S1082{"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(ˆ¨êüÿÿÿÿ8„Ğ°ıŠ2J$6ea1cac3-94a9-4889-a2f1-daa5f50d7688
+ typescript:S6847|"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(ğÏÖÔüÿÿÿÿ8„Ğ°ıŠ2J$6ca245e1-d535-4094-8414-90a02c569630
+­typescript:S1082|"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(ğÏÖÔüÿÿÿÿ8„Ğ°ıŠ2J$179bb0c9-3f6d-4e12-86d3-33c503e0ea2b
+ typescript:S6847}"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(æƒùúÿÿÿÿ8„Ğ°ıŠ2J$0fc693be-ad59-40f0-9a52-fce85ba4aec9
+­typescript:S1082}"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(æƒùúÿÿÿÿ8„Ğ°ıŠ2J$7fa01126-ba1f-495f-909f-1dbbf03277ee
+¡typescript:S6847†"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(ö¯¹Êøÿÿÿÿ8…Ğ°ıŠ2J$26e96667-1b7e-44de-adc1-89499262649c
+®typescript:S1082†"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(ö¯¹Êøÿÿÿÿ8…Ğ°ıŠ2J$b2afe884-3875-4de9-a215-366228b203a5
+¡typescript:S6847‡"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(æõˆúÿÿÿÿ8…Ğ°ıŠ2J$d55c3084-7388-421f-af80-16a538b29c5b
+®typescript:S1082‡"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(æõˆúÿÿÿÿ8…Ğ°ıŠ2J$3703213e-20a2-4c31-929e-37dbe841c734
+›typescript:S6847ˆ"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(¶ ÄG8…Ğ°ıŠ2J$0b8b2a7b-7164-4cf1-97a3-d73f490d3c7b
+¨typescript:S1082ˆ"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(¶ ÄG8…Ğ°ıŠ2J$796c5bf1-3f56-47b3-abad-75a4f9b6e699
+¡typescript:S6847‰"RNon-interactive elements should not be assigned mouse or keyboard event listeners.(âÈæ®ÿÿÿÿÿ8†Ğ°ıŠ2J$93e0730d-7522-491c-a0d8-ad37875329ec
+®typescript:S1082‰"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(âÈæ®ÿÿÿÿÿ8†Ğ°ıŠ2J$744ccbdd-a86a-4311-bb3c-4f1c69b07a81

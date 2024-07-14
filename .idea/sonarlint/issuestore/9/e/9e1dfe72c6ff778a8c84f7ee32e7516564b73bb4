@@ -1,0 +1,7 @@
+
+stypescript:S1128"%Remove this unused import of 'login'.(¨ñßÿÿÿÿÿ8Î‘€‹2J$f6286441-2fbf-48d7-b306-c1320587fcfc
+ttypescript:S1128"&Remove this unused import of 'signup'.(¨ñßÿÿÿÿÿ8Î‘€‹2J$66738faf-dc68-4e5e-a67b-41a3bff0441f
+typescript:S1854"6Remove this useless assignment to variable "username".(ÆĞÙ8Ï‘€‹2J$dd4895a3-59c8-4e89-8f6e-2d1a7410299d
+ztypescript:S6749h",A fragment with only one child is redundant.(™åÑğüÿÿÿÿ8Ï‘€‹2J$6d37bc6b-daf4-4cba-a428-d57afe06a72c
+‘typescript:S6848v"ÂAvoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.(²¦ÊÆıÿÿÿÿ8Ï‘€‹2J$11d9b3b1-22f8-4cba-85f2-8b17e2849f13
+­typescript:S1082v"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(²¦ÊÆıÿÿÿÿ8Ï‘€‹2J$de69a55e-4475-43da-826d-edc036c49fe4
