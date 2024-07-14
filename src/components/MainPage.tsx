@@ -106,7 +106,7 @@ const MainPage = () => {
                 </>
             ) : (
                 <>
-                  <button onClick={() => navigate('/auth')}>로그인</button>
+                  <button onClick={() => navigate('/member/login')}>로그인</button>
                   <button onClick={() => navigate('/auth?mode=signup')}>회원가입</button>
                 </>
             )}
