@@ -1,0 +1,53 @@
+.login-component {
+  position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.login-component > h2 {
+	text-align: left;
+	color: #fcd11e;
+	letter-spacing: 1px;
+	margin-bottom: 40px;
+	font-weight: bold;
+}
+
+.login-component input {
+  width: 100%;
+	height: 35px;
+	margin-top: 20px;
+	font-size: 18px;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.login-component-error-message {
+	margin-top: 20px;
+	text-align: center;
+  color: red;
+}
+
+.login-component-footer {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.login-component-footer > button {
+	width: 100px;
+	height: 40px;
+	border: 2px solid #fcd11e;
+	background: #fcd11e;
+	border-radius: 25px;
+	padding: 3px 12px 5px 12px;
+	color: black;
+	font-size: 14px;
+}
+
+.login-component-footer > button:hover {
+	color: black;
+	background: #fff;
+	border: 2px solid #fcd11e;
+	cursor: pointer;
+}
