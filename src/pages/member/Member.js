@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Login from "../../components/member/Login";
 import Signup from "../../components/member/Signup";
+import NotFound from "../../components/global/NotFound";
 import "./member.css";
 
 function Member() {
@@ -23,7 +24,7 @@ function Member() {
           </div>
           
         </div>
-      : <></>}
+      : <NotFound />}
     </>
   );
 }
