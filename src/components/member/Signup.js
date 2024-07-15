@@ -61,6 +61,10 @@ function Signup() {
 
   };
 
+  const handleKakaoSignup = () => {
+    window.location.href = "https://kauth.kakao.com/oauth/authorize?client_id=dc12e65d8b21d3810968dc2a20382d52&redirect_uri=http://localhost:3000/auth&response_type=code";
+  };
+
   return (
     <div className="signup-component">
       <h2>회원가입</h2>
@@ -110,6 +114,12 @@ function Signup() {
       <div className="signup-component-footer">
         <Link to="/member/login">로그인</Link>
         <button onClick={handleSignup}>회원가입</button>
+      </div>
+
+      <div className="signup-component-social">
+        <button onClick={handleKakaoSignup}>
+          <img src="http://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오 로그인" />
+        </button>
       </div>
     </div>
   );

@@ -66,3 +66,26 @@
 	border: 2px solid #fcd11e;
 	cursor: pointer;
 }
+
+.signup-component-social {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.signup-component-social > button {
+	width: 50px;
+	height: 50px;
+	margin-top: 10px;
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.signup-component-social > button > img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.signup-component-social > button > img:hover {
+	cursor: pointer;
+}
