@@ -9,11 +9,13 @@ const api = axios.create({
 
 // JWT 토큰을 설정하는 인터셉터
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('accessToken');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
 // 로그인 API 호출 함수

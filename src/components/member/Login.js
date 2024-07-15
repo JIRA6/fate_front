@@ -42,7 +42,14 @@ function Login() {
       withCredentials: true
     }).then( (response) => {
       if (response.data.statusCode === 200) {
+        let isManager = response.data.message.split(" ")[0];
+        let check = false;
 
+        if (isManager === "MANAGER") {
+          check = true;
+        }
+
+        localStorage.setItem("isManager", check);
         localStorage.setItem("accessToken", response.headers.authorization);
 
         setMessage("");

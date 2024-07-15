@@ -1,0 +1,14 @@
+.main-page {
+  padding: 20px;
+}
+
+.main-page-icon {
+  margin-bottom: 20px;
+}
+
+.main-page-content {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
