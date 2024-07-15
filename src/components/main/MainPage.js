@@ -8,6 +8,8 @@ function MainPage() {
   const [newBoardTitle, setNewBoardTitle] = useState('');
   const [newBoardIntro, setNewBoardIntro] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [inviteUserId, setInviteUserId] = useState('');
+  const [inviteBoardId, setInviteBoardId] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
   const [isManager, setIsManager] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
@@ -17,7 +19,7 @@ function MainPage() {
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     const managerStatus = localStorage.getItem('isManager') === 'true'; // 매니저 여부 확인
-    setIsLogin(!!token); // 토큰이 존재하면 로그인 상태로 설정
+    setIsLogin(token); // 토큰이 존재하면 로그인 상태로 설정
     setIsManager(managerStatus); // 매니저 상태 설정
 
     if (token) {
@@ -49,7 +51,6 @@ function MainPage() {
         withCredentials: true,
       });
       localStorage.removeItem('accessToken');
-      localStorage.removeItem('userRole');
       localStorage.removeItem('isManager'); // 로그아웃 시 매니저 여부 제거
       setIsLogin(false);
       setIsManager(false);
@@ -62,7 +63,7 @@ function MainPage() {
   const handleAccountDeletion = async () => {
     const token = localStorage.getItem('accessToken');
     try {
-      await axios.delete('http://localhost:8080/api/users/withdraw', {
+      await axios.delete('http://localhost:8080/api/users/withdrawal', {
         headers: {
           Authorization: token,
         },
@@ -70,7 +71,6 @@ function MainPage() {
       });
       alert('회원탈퇴가 완료되었습니다.');
       localStorage.removeItem('accessToken');
-      localStorage.removeItem('userRole');
       localStorage.removeItem('isManager'); // 탈퇴 시 매니저 여부 제거
       setIsLogin(false);
       setIsManager(false);
@@ -135,11 +135,33 @@ function MainPage() {
     }
   };
 
+  const inviteMember = async () => {
+    const token = localStorage.getItem('accessToken');
+    try {
+      const inviteData = { userId: inviteUserId };
+      await axios.post(`http://localhost:8080/api/boards/${inviteBoardId}/invite`, inviteData, {
+        headers: {
+          Authorization: token,
+        },
+        withCredentials: true,
+      });
+      alert('초대 완료');
+      setInviteUserId('');
+      setInviteBoardId(null);
+    } catch (error) {
+      console.error('초대 실패:', error);
+    }
+  };
+
   const handleEditClick = (board) => {
     setEditBoardId(board.id);
     setNewBoardTitle(board.title);
     setNewBoardIntro(board.intro);
     setShowForm(true);
+  };
+
+  const handleInviteClick = (boardId) => {
+    setInviteBoardId(boardId);
   };
 
   return (
@@ -172,6 +194,7 @@ function MainPage() {
                       <>
                         <button onClick={() => handleEditClick(board)}>수정</button>
                         <button onClick={() => deleteBoard(board.id)}>삭제</button>
+                        <button onClick={() => handleInviteClick(board.id)}>초대</button>
                       </>
                   )}
                 </div>
@@ -198,6 +221,18 @@ function MainPage() {
                         <button onClick={editBoardId ? updateBoard : addBoard}>{editBoardId ? '수정' : '추가'}</button>
                         <button onClick={() => setShowForm(false)}>취소</button>
                       </div>
+                    </div>
+                )}
+                {inviteBoardId && (
+                    <div className="invite-form">
+                      <input
+                          type="text"
+                          placeholder="초대할 사용자 ID"
+                          value={inviteUserId}
+                          onChange={(e) => setInviteUserId(e.target.value)}
+                      />
+                      <button onClick={inviteMember}>초대</button>
+                      <button onClick={() => setInviteBoardId(null)}>취소</button>
                     </div>
                 )}
               </>
