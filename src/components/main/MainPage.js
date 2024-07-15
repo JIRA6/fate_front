@@ -5,8 +5,8 @@ import "./mainpage.css";
 
 function MainPage() {
   const [boards, setBoards] = useState([]);
-  const [newBoardName, setNewBoardName] = useState('');
-  const [newBoardDescription, setNewBoardDescription] = useState('');
+  const [newBoardTitle, setNewBoardTitle] = useState('');
+  const [newBoardIntro, setNewBoardIntro] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isManager, setIsManager] = useState(false);
@@ -16,21 +16,20 @@ function MainPage() {
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
-    const managerStatus = localStorage.getItem('isManager');// 매니저 여부 확인
-    setIsLogin(token); // 토큰이 존재하면 로그인 상태로 설정
+    const managerStatus = localStorage.getItem('isManager') === 'true'; // 매니저 여부 확인
+    setIsLogin(!!token); // 토큰이 존재하면 로그인 상태로 설정
     setIsManager(managerStatus); // 매니저 상태 설정
-    console.log(isManager)
 
     if (token) {
       fetchBoards(token);
     }
-  }, [isManager]);
+  }, []);
 
   const fetchBoards = async (token) => {
     try {
       const response = await axios.get('http://localhost:8080/api/boards', {
         headers: {
-          Authorization: `${token}`,
+          Authorization: token,
         },
         withCredentials: true,
       });
@@ -45,7 +44,7 @@ function MainPage() {
     try {
       await axios.post('http://localhost:8080/api/users/logout', {}, {
         headers: {
-          Authorization: `${token}`,
+          Authorization: token,
         },
         withCredentials: true,
       });
@@ -65,7 +64,7 @@ function MainPage() {
     try {
       await axios.delete('http://localhost:8080/api/users/withdraw', {
         headers: {
-          Authorization: `${token}`,
+          Authorization: token,
         },
         withCredentials: true,
       });
@@ -85,16 +84,16 @@ function MainPage() {
   const addBoard = async () => {
     const token = localStorage.getItem('accessToken');
     try {
-      const newBoard = { name: newBoardName, description: newBoardDescription };
+      const newBoard = { title: newBoardTitle, intro: newBoardIntro };
       const response = await axios.post('http://localhost:8080/api/boards', newBoard, {
         headers: {
-          Authorization: `${token}`,
+          Authorization: token,
         },
         withCredentials: true,
       });
       setBoards([...boards, response.data.data]);
-      setNewBoardName('');
-      setNewBoardDescription('');
+      setNewBoardTitle('');
+      setNewBoardIntro('');
       setShowForm(false);
     } catch (error) {
       console.error('보드 추가 실패:', error);
@@ -106,7 +105,7 @@ function MainPage() {
     try {
       await axios.delete(`http://localhost:8080/api/boards/${boardId}`, {
         headers: {
-          Authorization: `${token}`,
+          Authorization: token,
         },
         withCredentials: true,
       });
@@ -119,16 +118,16 @@ function MainPage() {
   const updateBoard = async () => {
     const token = localStorage.getItem('accessToken');
     try {
-      const updatedBoard = { name: newBoardName, description: newBoardDescription };
+      const updatedBoard = { title: newBoardTitle, intro: newBoardIntro };
       const response = await axios.put(`http://localhost:8080/api/boards/${editBoardId}`, updatedBoard, {
         headers: {
-          Authorization: `${token}`,
+          Authorization: token,
         },
         withCredentials: true,
       });
       setBoards(boards.map(board => (board.id === editBoardId ? response.data.data : board)));
-      setNewBoardName('');
-      setNewBoardDescription('');
+      setNewBoardTitle('');
+      setNewBoardIntro('');
       setShowForm(false);
       setEditBoardId(null);
     } catch (error) {
@@ -138,8 +137,8 @@ function MainPage() {
 
   const handleEditClick = (board) => {
     setEditBoardId(board.id);
-    setNewBoardName(board.name);
-    setNewBoardDescription(board.description);
+    setNewBoardTitle(board.title);
+    setNewBoardIntro(board.intro);
     setShowForm(true);
   };
 
@@ -167,8 +166,8 @@ function MainPage() {
           <div className="board-container">
             {boards.map((board) => (
                 <div key={board.id} className="board-card">
-                  <h2 onClick={() => navigate(`/project/${board.id}`)}>{board.name}</h2>
-                  <p onClick={() => navigate(`/project/${board.id}`)}>{board.description}</p>
+                  <h2 onClick={() => navigate(`/project/${board.id}`)}>{board.title}</h2>
+                  <p onClick={() => navigate(`/project/${board.id}`)}>{board.intro}</p>
                   {isManager && (
                       <>
                         <button onClick={() => handleEditClick(board)}>수정</button>
@@ -186,14 +185,14 @@ function MainPage() {
                       <input
                           type="text"
                           placeholder="보드 이름"
-                          value={newBoardName}
-                          onChange={(e) => setNewBoardName(e.target.value)}
+                          value={newBoardTitle}
+                          onChange={(e) => setNewBoardTitle(e.target.value)}
                       />
                       <input
                           type="text"
                           placeholder="한줄 소개"
-                          value={newBoardDescription}
-                          onChange={(e) => setNewBoardDescription(e.target.value)}
+                          value={newBoardIntro}
+                          onChange={(e) => setNewBoardIntro(e.target.value)}
                       />
                       <div className="form-buttons">
                         <button onClick={editBoardId ? updateBoard : addBoard}>{editBoardId ? '수정' : '추가'}</button>
