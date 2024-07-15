@@ -1,62 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
-import { createBoard, getAllBoards, login, signup, logout, withdraw } from '../api';
-
-// 프로젝트 객체의 타입 정의
-interface Project {
-  id: number;
-  name: string;
-  description: string;
-}
-
-interface Board {
-  id: number;
-  title: string;
-  intro: string;
-}
+import axios from 'axios';
+import '../../App.css';
 
 const MainPage = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [boards, setBoards] = useState<Board[]>([]);
+  const [projects, setProjects] = useState([]);
+  const [boards, setBoards] = useState([]);
   const [newProjectName, setNewProjectName] = useState('');
   const [newProjectDescription, setNewProjectDescription] = useState('');
   const [newBoardTitle, setNewBoardTitle] = useState('');
   const [newBoardIntro, setNewBoardIntro] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState<string | null>(null);
   const [showWarning, setShowWarning] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const storedUsername = localStorage.getItem('username');
     setIsLoggedIn(loggedIn);
-    setUsername(storedUsername);
     if (loggedIn) {
       fetchBoards();
     }
   }, []);
 
   const handleLogout = async () => {
-    await logout();
-    localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('username');
-    setIsLoggedIn(false);
-    setUsername(null);
-    navigate('/');  // 로그아웃 후 메인 페이지로 이동
+    try {
+      await axios.post('http://localhost:8080/api/users/logout', {}, { withCredentials: true });
+      localStorage.setItem('isLoggedIn', 'false');
+      localStorage.removeItem('username');
+      setIsLoggedIn(false);
+      navigate('/');
+    } catch (error) {
+      console.error('로그아웃 실패:', error);
+    }
   };
 
   const handleAccountDeletion = async () => {
-    await withdraw();
-    alert('회원탈퇴가 완료되었습니다.');
-    localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('username');
-    setIsLoggedIn(false);
-    setUsername(null);
-    setShowWarning(false); // 모달창 닫기
-    navigate('/');  // 회원탈퇴 후 메인 페이지로 이동
+    try {
+      await axios.post('http://localhost:8080/api/users/withdraw', {}, { withCredentials: true });
+      alert('회원탈퇴가 완료되었습니다.');
+      localStorage.setItem('isLoggedIn', 'false');
+      localStorage.removeItem('username');
+      setIsLoggedIn(false);
+      setShowWarning(false);
+      navigate('/');
+    } catch (error) {
+      console.error('회원탈퇴 실패:', error);
+    }
   };
 
   const addProject = () => {
@@ -74,8 +64,10 @@ const MainPage = () => {
   const addBoard = async () => {
     try {
       const newBoard = { title: newBoardTitle, intro: newBoardIntro };
-      const data = await createBoard(newBoard);
-      setBoards([...boards, data]);
+      const response = await axios.post('http://localhost:8080/api/boards', newBoard, {
+        withCredentials: true,
+      });
+      setBoards([...boards, response.data.data]);
       setNewBoardTitle('');
       setNewBoardIntro('');
     } catch (error) {
@@ -85,8 +77,10 @@ const MainPage = () => {
 
   const fetchBoards = async () => {
     try {
-      const data = await getAllBoards();
-      setBoards(data);
+      const response = await axios.get('http://localhost:8080/api/boards', {
+        withCredentials: true,
+      });
+      setBoards(response.data.data);
     } catch (error) {
       console.error('보드 조회 실패:', error);
     }
@@ -102,7 +96,9 @@ const MainPage = () => {
           <div className="navbar-buttons">
             {isLoggedIn ? (
                 <>
-                  <button className="right" onClick={() => setShowWarning(true)}>회원탈퇴</button>
+                  <button className="right" onClick={() => setShowWarning(true)}>
+                    회원탈퇴
+                  </button>
                 </>
             ) : (
                 <>
@@ -157,7 +153,9 @@ const MainPage = () => {
                 <h2>보드 목록</h2>
                 <ul>
                   {boards.map((board) => (
-                      <li key={board.id}>{board.title}</li>
+                      <li key={board.id} onClick={() => navigate(`/project/${board.id}`)}>
+                        {board.title}
+                      </li>
                   ))}
                 </ul>
                 <div className="board-form">
